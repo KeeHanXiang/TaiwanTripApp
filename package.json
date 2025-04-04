@@ -1,0 +1,18 @@
+{
+  "name": "taiwantripapp",
+  "version": "1.0.0",
+  "description": "Our Money Management App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "frontend": "npm start --prefix frontend",
+    "backend": "node backend/server.js",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
