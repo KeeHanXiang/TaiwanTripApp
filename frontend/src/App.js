@@ -1,15 +1,9 @@
-import { useEffect, useState } from 'react';
+// src/App.js
+import React from 'react';
+import AppRoutes from './routes';
 
 function App() {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    fetch('/api/hello') // No need for localhost because of proxy
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message));
-  }, []);
-
-  return <h1>{message}</h1>;
+  return <AppRoutes />;
 }
 
 export default App;

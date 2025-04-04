@@ -131,3 +131,120 @@ npm install -g nodemon
 
 ---
 
+## 🐳 Docker Setup
+
+This project uses Docker to containerize the **frontend**, **backend**, and **MySQL database** using `docker-compose`.
+
+### 🗂️ Directory Structure
+
+```
+TaiwanTripApp/
+├── frontend/        # React App
+│   └── Dockerfile
+├── backend/         # Node.js + Express + dotenv
+│   └── Dockerfile
+├── docker-compose.yml
+```
+
+---
+
+### 🐳 Backend Dockerfile (`backend/Dockerfile`)
+
+```Dockerfile
+FROM node:18
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 5000
+CMD ["npm", "run", "dev"]
+```
+
+---
+
+### 🐳 Frontend Dockerfile (`frontend/Dockerfile`)
+
+```Dockerfile
+FROM node:18
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+CMD ["npm", "start"]
+```
+
+---
+
+### 🧩 Docker Compose (`docker-compose.yml`)
+
+```yaml
+version: "3.8"
+
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: example
+      DB_NAME: taiwantrip
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    stdin_open: true
+    tty: true
+
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: taiwantrip
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+
+volumes:
+  dbdata:
+```
+
+---
+
+### 🏃 Run the project
+
+From the root folder:
+
+```bash
+docker-compose up --build
+```
+
+Access the services:
+
+- Frontend: http://localhost:3000  
+- Backend API: http://localhost:5000/api/users
+
+---

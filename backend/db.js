@@ -1,4 +1,6 @@
-require('dotenv').config();
+require('dotenv').config(); // standard + works in all cases
+console.log("DB USER:", process.env.DB_USER); // temporary debug
+
 const mysql = require('mysql2');
 
 const db = mysql.createConnection({

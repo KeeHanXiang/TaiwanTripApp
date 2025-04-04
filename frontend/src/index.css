@@ -1,13 +1,42 @@
-body {
+/* Global reset */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: sans-serif;
+  color: white;
+}
+
+/* Player card styling */
+.player-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.player-card {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  width: 120px;
+  backdrop-filter: blur(6px);
+}
+
+.player-icon {
+  font-size: 2.5rem;
+}
+
+.player-name {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
 }
