@@ -1,7 +1,7 @@
 // backend/server.js
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config(); // standard + works in all cases
+require('dotenv').config({ path: './backend/.env' });
 console.log("DB USER:", process.env.DB_USER); // temporary debug
 
 const db = require('./db');

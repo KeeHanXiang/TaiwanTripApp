@@ -1,8 +1,8 @@
 // backend/routes/userRoutes.js
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/userController');
+const {getUsers} = require('../controllers/userController');
 
-router.get('/users', userController.getUsers);
+router.get('/users', getUsers);
 
 module.exports = router;

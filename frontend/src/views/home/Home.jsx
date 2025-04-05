@@ -12,11 +12,21 @@ const Home = () => {
       .catch(console.error);
   }, []);
 
+  const backgroundStyle = {
+    backgroundImage: "url('/background2.jpg')", // Must be in `public/` folder
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    minHeight: "100vh",
+  };
+
   return (
-    <div className="player-container">
-      {users.map((user) => (
-        <PlayerCard key={user.id} name={user.name} />
-      ))}
+    <div style={backgroundStyle}>
+      <div className="player-container">
+        {users.map((user) => (
+          <PlayerCard key={user.id} name={user.name} />
+        ))}
+      </div>
     </div>
   );
 };
