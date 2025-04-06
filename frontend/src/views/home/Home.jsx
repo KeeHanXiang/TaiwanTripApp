@@ -9,9 +9,7 @@ const Home = () => {
   const [selectedUserId, setSelectedUserId] = useState(null);
 
   useEffect(() => {
-    UserService.getUsers()
-      .then(setUsers)
-      .catch(console.error);
+    UserService.getUsers().then(setUsers).catch(console.error);
   }, []);
 
   const backgroundStyle = {
@@ -34,21 +32,19 @@ const Home = () => {
       <div className="player-container">
         {users.map((user) => (
           <PlayerCard
-            key={user.id}
+            key={user.user_id}
+            id={user.user_id} // Pass the correct id here!
             name={user.name}
             imageUrl={user.imageUrl}
-            isOwner={selectedUserId === user.id}
-            onClick={() => setSelectedUserId(user.id)}
-            onUpload={async (url) => {
-              try {
-                await UserService.uploadProfilePicture(user.id, url);
-                setUsers((prev) =>
-                  prev.map((u) => (u.id === user.id ? { ...u, imageUrl: url } : u))
-                );
-              } catch (err) {
-                alert("Failed to update profile image");
-              }
-            }}
+            isOwner={selectedUserId === user.user_id} // Use user.user_id consistently
+            onClick={() => setSelectedUserId(user.user_id)}
+            onUpload={(url) =>
+              setUsers((prev) =>
+                prev.map((u) =>
+                  u.user_id === user.user_id ? { ...u, imageUrl: url } : u
+                )
+              )
+            }
           />
         ))}
       </div>

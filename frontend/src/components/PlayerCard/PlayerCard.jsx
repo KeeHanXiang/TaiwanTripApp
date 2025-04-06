@@ -3,7 +3,7 @@ import React from "react";
 import ImageUploader from "../ImageUploader/ImageUploader";
 import "./PlayerCard.css";
 
-const PlayerCard = ({ name, imageUrl, isOwner, onClick, onUpload }) => {
+const PlayerCard = ({ id, name, imageUrl, isOwner, onClick, onUpload }) => {
   return (
     <div className="player-card" onClick={onClick}>
       <div className="player-icon">
@@ -16,7 +16,7 @@ const PlayerCard = ({ name, imageUrl, isOwner, onClick, onUpload }) => {
       <div className="player-name">{name}</div>
       {isOwner && (
         <div className="uploader-wrapper">
-          <ImageUploader onUpload={onUpload} />
+          <ImageUploader userId={id} onUpload={onUpload} />
         </div>
       )}
     </div>

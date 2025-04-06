@@ -18,15 +18,14 @@ const getUsers = (req, res) => {
 
 const updateUserProfilePic = (req, res) => {
   const { userId, imageUrl } = req.body;
-
-  console.log(userId, imageUrl)
+  console.log("Updating user:", userId, "with imageUrl:", imageUrl);
 
   User.updateProfilePicture(userId, imageUrl, (err) => {
     if (err) {
-      console.error('Error updating profile picture:', err);
-      return res.status(500).json({ error: 'Failed to update profile picture' });
+      console.error("Error updating profile picture:", err);
+      return res.status(500).json({ error: "Failed to update profile picture" });
     }
-    res.json({ message: 'Profile picture updated successfully' });
+    res.json({ message: "Profile picture updated successfully" });
   });
 };
 

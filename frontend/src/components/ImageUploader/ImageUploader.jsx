@@ -1,7 +1,8 @@
 // frontend/src/components/ImageUploader/ImageUploader.jsx
 import React, { useState } from "react";
+import UserService from "../../services/UserService";
 
-const ImageUploader = ({ onUpload }) => {
+const ImageUploader = ({ userId, onUpload }) => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
 
@@ -10,7 +11,7 @@ const ImageUploader = ({ onUpload }) => {
     setUploading(true);
 
     try {
-      // Prepare form data
+      // Upload file to Firebase
       const formData = new FormData();
       formData.append("file", file);
 
@@ -24,11 +25,15 @@ const ImageUploader = ({ onUpload }) => {
       }
 
       const { downloadURL } = await response.json();
+      console.log("Firebase download URL:", downloadURL);
 
-      // Pass the download URL back to the parent component
-      onUpload(downloadURL);
+      // Update the profile picture in the database using the service
+      await UserService.updateProfilePic(userId, downloadURL);
 
-      alert("✅ Image uploaded!");
+      // If an onUpload callback is provided, pass the downloadURL back
+      if (onUpload) onUpload(downloadURL);
+
+      alert("✅ Image uploaded and profile updated!");
     } catch (error) {
       console.error("Upload failed:", error);
       alert("❌ Upload failed!");
