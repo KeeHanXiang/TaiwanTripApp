@@ -1,3 +1,4 @@
+// backend/db.js
 require('dotenv').config(); // standard + works in all cases
 console.log("DB USER:", process.env.DB_USER); // temporary debug
 

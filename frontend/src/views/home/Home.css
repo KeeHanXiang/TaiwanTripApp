@@ -1,8 +1,25 @@
 .player-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 5rem;
+}
+
+.title {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+/* On medium and larger screens */
+@media (min-width: 768px) {
+  .player-container {
+    gap: 8rem;
   }
-  
+}
