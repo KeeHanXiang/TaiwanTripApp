@@ -1,9 +1,8 @@
 // frontend/src/components/PlayerCard/PlayerCard.jsx
 import React from "react";
-import ImageUploader from "../ImageUploader/ImageUploader";
 import "./PlayerCard.css";
 
-const PlayerCard = ({ id, name, imageUrl, isOwner, onClick, onUpload }) => {
+const PlayerCard = ({ id, name, imageUrl, onClick }) => {
   return (
     <div className="player-card" onClick={onClick}>
       <div className="player-icon">
@@ -14,11 +13,6 @@ const PlayerCard = ({ id, name, imageUrl, isOwner, onClick, onUpload }) => {
         )}
       </div>
       <div className="player-name">{name}</div>
-      {isOwner && (
-        <div className="uploader-wrapper">
-          <ImageUploader userId={id} onUpload={onUpload} />
-        </div>
-      )}
     </div>
   );
 };
