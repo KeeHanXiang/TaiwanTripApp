@@ -4,6 +4,7 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 import ImageUploader from "../../components/ImageUploader/ImageUploader";
 import ManageBills from "../../components/ManageBills.jsx/ManageBills";
 import UserService from "../../services/UserService";
+import SneakyConfession from "../../components/SneakyConfession/SneakyConfession";
 
 const ProfilePage = () => {
   const { userId } = useParams();
@@ -112,7 +113,7 @@ const ProfilePage = () => {
               {activeFeature === "confession" && (
                 <div>
                   <h3>Sneaky Confession</h3>
-                  <p>Sneaky Confession feature content goes here.</p>
+                  <SneakyConfession userId={user.user_id} />
                 </div>
               )}
               {activeFeature === "bills" && (
