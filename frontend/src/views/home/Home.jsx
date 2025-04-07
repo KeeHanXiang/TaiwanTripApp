@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import PlayerCard from "../../components/PlayerCard/PlayerCard";
 import UserService from "../../services/UserService";
+import ConfessionList from "../../components/ConfessionList/ConfessionList";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
@@ -41,6 +42,8 @@ const Home = () => {
           />
         ))}
       </div>
+      {/* Render the confession list below the character selection */}
+      <ConfessionList />
     </div>
   );
 };

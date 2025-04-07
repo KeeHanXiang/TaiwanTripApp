@@ -1,7 +1,6 @@
 // backend/controllers/confessionController.js
 const Confession = require('../models/confessionModel');
 
-// Add a new confession
 const addConfession = (req, res) => {
   const { userId, message } = req.body;
   if (!userId || !message) {
@@ -16,7 +15,6 @@ const addConfession = (req, res) => {
   });
 };
 
-// Get all confessions for a specific user
 const getConfessions = (req, res) => {
   const userId = req.params.userId;
   Confession.getConfessionsByUser(userId, (err, results) => {
@@ -28,7 +26,19 @@ const getConfessions = (req, res) => {
   });
 };
 
+// New function: get all confessions
+const getAllConfessions = (req, res) => {
+  Confession.getAllConfessions((err, results) => {
+    if (err) {
+      console.error("Error fetching all confessions:", err);
+      return res.status(500).json({ error: 'Failed to fetch confessions.' });
+    }
+    res.json(results);
+  });
+};
+
 module.exports = {
   addConfession,
   getConfessions,
+  getAllConfessions,
 };
