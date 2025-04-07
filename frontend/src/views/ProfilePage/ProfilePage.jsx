@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import ImageUploader from "../../components/ImageUploader/ImageUploader";
+import ManageBills from "../../components/ManageBills.jsx/ManageBills";
 import UserService from "../../services/UserService";
 
 const ProfilePage = () => {
@@ -116,8 +117,8 @@ const ProfilePage = () => {
               )}
               {activeFeature === "bills" && (
                 <div>
-                  <h3>Manage Bills</h3>
-                  <p>Manage Bills feature content goes here.</p>
+                  <h2>Manage Bills</h2>
+                  <ManageBills userId={user.user_id} />
                 </div>
               )}
               <button onClick={() => setActiveFeature(null)}>Back</button>
