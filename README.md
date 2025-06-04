@@ -58,17 +58,18 @@ CREATE DATABASE taiwantrip;
 USE taiwantrip;
 
 CREATE TABLE users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255),
   email VARCHAR(255)
+  imageUrl VARCHAR(255)
 );
 
-INSERT INTO users (name, email) VALUES
-('Alice Chen', 'alice@example.com'),
-('Ben Tan', 'ben@example.com'),
-('Cindy Lim', 'cindy@example.com'),
-('Daniel Ng', 'daniel@example.com'),
-('Elaine Teo', 'elaine@example.com');
+INSERT INTO users (name, email, imageUrl) VALUES
+('Alice Chen', 'alice@example.com', 'alice.png'),
+('Ben Tan', 'ben@example.com', 'ben.png'),
+('Cindy Lim', 'cindy@example.com', 'cindy.png'),
+('Daniel Ng', 'daniel@example.com', 'daniel.png'),
+('Elaine Teo', 'elaine@example.com', 'elaine.png');
 ```
 
 ---
